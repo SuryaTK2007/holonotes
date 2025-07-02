@@ -1,59 +1,69 @@
-# Holonotes
+📝 HoloNotes
+HoloNotes is a decentralized, peer-to-peer note-taking app built on the Holochain framework. It allows users to create, edit, and manage personal notes — with all data stored locally and shared via a distributed hash table (DHT), not a central server.
 
-## Environment Setup
+Built with ❤️ by Surya
 
-> PREREQUISITE: set up the [holochain development environment](https://developer.holochain.org/docs/install/).
+🌐 Live Demo (Coming Soon)
+This app is fully local-first and works with Holochain conductor sandbox.
 
-Enter the nix shell by running this in the root folder of the repository: 
+🚀 Features
+✅ Create, view, update, and delete notes
+🔐 Each note is linked to your agent (public key-based identity)
+📡 Real-time signals: live updates from other agents
+🌍 Fully decentralized — no central database
+⚡ Built-in WebAssembly Zome logic (Rust) and React UI (TypeScript)
+🧩 Modular, extensible design — ready for encryption, profiles, tags, etc.
+📦 Tech Stack
+Layer	Tech
+Backend	Holochain DNA (Rust Zomes)
+Frontend	React + TypeScript
+Networking	Conductor WebSocket API
+Packaging	.dna, .happ, and .webhapp bundles
+Styling	Custom CSS (can upgrade to Tailwind)
+📁 Project Structure
+.
+├── ui/              # React frontend
+├── zomes/notes/     # Rust zome logic for note management
+├── dnas/notes/      # DNA configuration
+├── workdir/         # Built hApp files (.dna, .happ)
+├── Cargo.toml       # Rust project config
+├── README.md        # This file
 
-```bash
-nix develop
-bun install
-```
+🧪 Running Locally
+Prerequisites:
+🧬 Holochain + Holonix
 
-**Run all the other instructions in this README from inside this nix shell, otherwise they won't work**.
+🧱 nix and hc command
 
-## Running 2 agents
- 
-```bash
-bun run start
-```
+🌐 Node.js (for frontend)
 
-This will create a network of 2 nodes connected to each other and their respective UIs.
-It will also bring up the Holochain Playground for advanced introspection of the conductors.
+Step 1: Build the DNA & hApp
 
-## Running the backend tests
+CARGO_TARGET_DIR=target cargo build --release --target wasm32-unknown-unknown hc dna pack dnas/notes/workdir hc app pack workdir
 
-```bash
-bun run test
-```
+Step 2: Run the Conductor
 
-## Bootstrapping a network
+hc sandbox generate workdir/holonotes.happ --run
 
-Create a custom network of nodes connected to each other and their respective UIs with:
+Step 3: Start the Frontend
 
-```bash
-AGENTS=3 bun run network
-```
+cd ui npm install npm run dev
 
-Substitute the "3" for the number of nodes that you want to bootstrap in your network.
-This will also bring up the Holochain Playground for advanced introspection of the conductors.
+Frontend runs on http://localhost:5173/
 
-## Packaging
+🛠 Future Plans:
+👤 Agent profile integration
 
-To package the web happ:
-``` bash
-bun run package
-```
+🔐 End-to-end encryption
 
-You'll have the `holonotes.webhapp` in `workdir`. This is what you should distribute so that the Holochain Launcher can install it.
-You will also have its subcomponent `holonotes.happ` in the same folder`.
+🏷️ Tag-based note filtering
 
-## Documentation
+🧪 UI test coverage
 
-This repository is using these tools:
-- [NPM Workspaces](https://docs.npmjs.com/cli/v7/using-npm/workspaces/): npm v7's built-in monorepo capabilities.
-- [hc](https://github.com/holochain/holochain/tree/develop/crates/hc): Holochain CLI to easily manage Holochain development instances.
-- [@holochain/tryorama](https://www.npmjs.com/package/@holochain/tryorama): test framework.
-- [@holochain/client](https://www.npmjs.com/package/@holochain/client): client library to connect to Holochain from the UI.
-- [hc playground](https://github.com/darksoil-studio/holochain-playground): introspection tooling to understand what's going on in the Holochain nodes.
+📦 Deploy as WebhApp
+
+📄 License
+MIT License — free to use, fork, and build on. Attribution appreciated.
+
+👋 Let’s Connect
+Built by Surya, an engineering student exploring decentralized systems and future-proof technologies.
