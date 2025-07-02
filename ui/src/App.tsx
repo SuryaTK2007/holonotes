@@ -1,8 +1,8 @@
 import { useContext } from "react";
 import { ClientContext } from "./ClientContext";
 
-import CreateNote from "/home/surya/Desktop/Holonotes/holonotes/ui/src/notes/notes/CreateNote.tsx";
-import ListNotes from "/home/surya/Desktop/Holonotes/holonotes/ui/src/notes/notes/ListNotes.tsx";
+import CreateNote from "/home/surya/Desktop/Holonotes/ui/src/notes/notes/CreateNote.tsx";
+import ListNotes from "/home/surya/Desktop/Holonotes/ui/src/notes/notes/ListNotes.tsx";
 import "./app.css";
 
 const App = () => {
