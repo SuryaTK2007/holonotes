@@ -1,4 +1,6 @@
 📝 HoloNotes
+
+
 HoloNotes is a decentralized, peer-to-peer note-taking app built on the Holochain framework. It allows users to create, edit, and manage personal notes — with all data stored locally and shared via a distributed hash table (DHT), not a central server.
 
 Built with ❤️ by Surya
