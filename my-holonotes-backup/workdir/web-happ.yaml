@@ -1,6 +1,0 @@
-manifest_version: '1'
-name: holonotes
-ui:
-  bundled: ../ui/dist.zip
-happ_manifest:
-  bundled: ./holonotes.happ
