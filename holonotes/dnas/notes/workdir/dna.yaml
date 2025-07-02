@@ -1,0 +1,19 @@
+manifest_version: '1'
+name: notes
+integrity:
+  network_seed: null
+  properties: null
+  zomes:
+  - name: notes_integrity
+    hash: null
+    bundled: ../../../target/wasm32-unknown-unknown/release/notes_integrity.wasm
+    dependencies: null
+    dylib: null
+coordinator:
+  zomes:
+  - name: notes
+    hash: null
+    bundled: ../../../target/wasm32-unknown-unknown/release/notes.wasm
+    dependencies:
+    - name: notes_integrity
+    dylib: null

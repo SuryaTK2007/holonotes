@@ -1,0 +1,180 @@
+/* General Reset & Layout */
+body {
+  margin: 0;
+  font-family: "Inter", -apple-system, BlinkMacSystemFont, sans-serif;
+  background: linear-gradient(135deg, #e0e7ff 0%, #f3f4f6 100%);
+  color: #1f2937;
+  min-height: 100vh;
+}
+
+.app-container {
+  max-width: 900px;
+  margin: 3rem auto;
+  padding: 2.5rem;
+  background: linear-gradient(145deg, #ffffff, #f8fafc);
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1), 0 5px 15px rgba(0, 0, 0, 0.05);
+}
+
+/* Title */
+h1, h3 {
+  text-align: center;
+  color: #1e40af;
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  letter-spacing: -0.025em;
+  background: linear-gradient(to right, #1e40af, #3b82f6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+
+/* Form Styling */
+form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 2.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+label {
+  font-size: 1rem;
+  font-weight: 500;
+  color: #1f2937;
+}
+
+input, textarea {
+  padding: 1rem;
+  border: 2px solid transparent;
+  border-radius: 12px;
+  font-size: 1rem;
+  background: #f1f5f9;
+  transition: all 0.3s ease;
+  resize: vertical;
+  box-shadow: inset 0 2px 5px rgba(0, 0, 0, 0.05);
+  width: 100%;
+}
+
+input:focus, textarea:focus {
+  outline: none;
+  border-color: #3b82f6;
+  background: #ffffff;
+  box-shadow: 0 0 0 4px rgba(59, 130, 246, 0.1);
+}
+
+textarea {
+  min-height: 120px;
+}
+
+button {
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+  color: white;
+  padding: 0.875rem 1.5rem;
+  font-weight: 600;
+  border: none;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(59, 130, 246, 0.3);
+}
+
+button:disabled {
+  background: #d1d5db;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+button:hover:not(:disabled) {
+  background: linear-gradient(90deg, #2563eb, #3b82f6);
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.4);
+}
+
+/* Note List */
+.note-list {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2.5rem;
+  margin-top: 2.5rem;
+}
+
+/* Note Card */
+.note-card {
+  background: linear-gradient(145deg, #ffffff, #f9fafb);
+  border: 1px solid #e5e7eb;
+  padding: 2.5rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.note-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 12px 25px rgba(0, 0, 0, 0.1);
+}
+
+.note-card h4 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: #1e40af;
+}
+
+.note-card p {
+  margin: 0;
+  font-size: 1rem;
+  color: #4b5563;
+  line-height: 1.6;
+}
+
+.note-card .note-date {
+  font-size: 0.875rem;
+  color: #6b7280;
+  margin-top: 0.5rem;
+}
+
+/* Actions (Edit/Delete/Cancel) */
+.note-actions {
+  display: flex;
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.note-actions button {
+  background: linear-gradient(90deg, #10b981, #34d399);
+  padding: 0.75rem 1.25rem;
+  border-radius: 10px;
+}
+
+.note-actions button.delete {
+  background: linear-gradient(90deg, #ef4444, #f87171);
+}
+
+.note-actions button.cancel {
+  background: linear-gradient(90deg, #6b7280, #9ca3af);
+}
+
+.note-actions button:hover {
+  filter: brightness(1.1);
+  transform: translateY(-1px);
+}
+
+/* Alerts */
+.alert {
+  background: #fef2f2;
+  color: #b91c1c;
+  padding: 1rem;
+  border-radius: 10px;
+  text-align: center;
+  margin-bottom: 2rem;
+}
