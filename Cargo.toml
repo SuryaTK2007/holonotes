@@ -18,3 +18,9 @@ path = "dnas/notes/zomes/coordinator/notes"
 
 [workspace.dependencies.notes_integrity]
 path = "dnas/notes/zomes/integrity/notes"
+
+[workspace.dependencies.profile]
+path = "dnas/notes/zomes/coordinator/profile"
+
+[workspace.dependencies.profile_integrity]
+path = "dnas/notes/zomes/integrity/profile"

@@ -714,6 +714,23 @@ dependencies = [
 ]
 
 [[package]]
+name = "profile"
+version = "0.0.1"
+dependencies = [
+ "hdk",
+ "profile_integrity",
+ "serde",
+]
+
+[[package]]
+name = "profile_integrity"
+version = "0.0.1"
+dependencies = [
+ "hdi",
+ "serde",
+]
+
+[[package]]
 name = "quote"
 version = "1.0.40"
 source = "registry+https://github.com/rust-lang/crates.io-index"

@@ -9,6 +9,11 @@ integrity:
     bundled: ../../../target/wasm32-unknown-unknown/release/notes_integrity.wasm
     dependencies: null
     dylib: null
+  - name: profile_integrity
+    hash: null
+    bundled: ../../../target/wasm32-unknown-unknown/release/profile_integrity.wasm
+    dependencies: null
+    dylib: null
 coordinator:
   zomes:
   - name: notes
@@ -16,4 +21,10 @@ coordinator:
     bundled: ../../../target/wasm32-unknown-unknown/release/notes.wasm
     dependencies:
     - name: notes_integrity
+    dylib: null
+  - name: profile
+    hash: null
+    bundled: ../../../target/wasm32-unknown-unknown/release/profile.wasm
+    dependencies:
+    - name: profile_integrity
     dylib: null

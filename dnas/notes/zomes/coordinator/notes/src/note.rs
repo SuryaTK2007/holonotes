@@ -4,22 +4,25 @@ use notes_integrity::*;
 #[hdk_extern]
 pub fn create_note(note: Note) -> ExternResult<Record> {
     let note_hash = create_entry(&EntryTypes::Note(note.clone()))?; //return ActionHash
-    let record = get(note_hash.clone(), GetOptions::default())?.ok_or(wasm_error!( //tries to retrieve record for created note from dht
+    let record = get(note_hash.clone(), GetOptions::default())?.ok_or(wasm_error!(
+        //tries to retrieve record for created note from dht
         WasmErrorInner::Guest("Could not find the newly created Note".to_string())
     ))?;
-    let path = Path::from("list_notes"); 
-    create_link( //creating link
+    let path = Path::from("list_notes");
+    create_link(
+        //creating link
         path.path_entry_hash()?, //from list_notes path
-        note_hash.clone(), // to the newly created note(ActionHash)
-        LinkTypes::ListNotes, //link type of ListNotes
-        (), //tag
+        note_hash.clone(),       // to the newly created note(ActionHash)
+        LinkTypes::ListNotes,    //link type of ListNotes
+        (),                      //tag
     )?;
     Ok(record)
 }
 
 #[hdk_extern]
 pub fn get_latest_note(original_note_hash: ActionHash) -> ExternResult<Option<Record>> {
-    let links = get_links( // returns a vector of all links
+    let links = get_links(
+        // returns a vector of all links
         GetLinksInputBuilder::try_new(original_note_hash.clone(), LinkTypes::NoteUpdates)?.build(),
     )?;
     let latest_link = links
