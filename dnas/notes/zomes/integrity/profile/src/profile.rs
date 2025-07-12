@@ -16,13 +16,17 @@ pub fn validate_create_profile(
 
 pub fn validate_update_profile(
     _action: Update,
-    _profile: Profile,
+    profile: Profile,
     _original_action: EntryCreationAction,
-    _original_profile: Profile,
+    original_profile: Profile,
 ) -> ExternResult<ValidateCallbackResult> {
-    Ok(ValidateCallbackResult::Invalid(
-        "Profiles cannot be updated".to_string(),
-    ))
+    if profile == original_profile {
+        return Ok(ValidateCallbackResult::Invalid("No changes made to profile".into()));
+    }
+    if profile.nickname.trim().is_empty() {
+        return Ok(ValidateCallbackResult::Invalid("Nickname cannot be empty".into()));
+    }
+    Ok(ValidateCallbackResult::Valid)
 }
 
 pub fn validate_delete_profile(
