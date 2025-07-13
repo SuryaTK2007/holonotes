@@ -9,6 +9,11 @@ pub use profile::*;
 pub enum EntryTypes {
     Profile(Profile),
 }
+#[hdk_link_types]
+pub enum LinkTypes {
+    AgentToProfile,
+}
+
 
 // Validation you perform during the genesis process. Nobody else on the network performs it, only you.
 // There *is no* access to network calls in this callback
@@ -46,7 +51,7 @@ pub fn validate_agent_joining(
 // You can read more about validation here: https://docs.rs/hdi/latest/hdi/index.html#data-validation
 #[hdk_extern]
 pub fn validate(op: Op) -> ExternResult<ValidateCallbackResult> {
-    match op.flattened::<EntryTypes, ()>()? {
+    match op.flattened::<EntryTypes, LinkTypes>()? {
         FlatOp::StoreEntry(store_entry) => match store_entry {
             OpEntry::CreateEntry { app_entry, action } => match app_entry {
                 EntryTypes::Profile(profile) => {
@@ -145,15 +150,12 @@ pub fn validate(op: Op) -> ExternResult<ValidateCallbackResult> {
                 ),
             }
         }
-        FlatOp::RegisterCreateLink {
-            link_type,
-            base_address,
-            target_address,
-            tag,
-            action,
-        } => Ok(ValidateCallbackResult::Invalid(
-            "There are no link types in this integrity zome".to_string(),
-        )),
+        FlatOp::RegisterCreateLink { link_type, .. } => match link_type {
+            LinkTypes::AgentToProfile => Ok(ValidateCallbackResult::Valid),
+            _ => Ok(ValidateCallbackResult::Invalid(
+            "Only AgentToProfile links are allowed".to_string(),
+            )),
+        }   
         FlatOp::RegisterDeleteLink {
             link_type,
             base_address,
